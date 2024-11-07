@@ -2,28 +2,23 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Authenticate from  './components/Authenticate'
+import SignUpForm from './components/SignUpForm'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [token, setToken] = useState(null);
 
   return (
     <>
-      <form>
-        <div className="form-group">
-          <label>Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+      <section>
+        <div>
+          <SignUpForm token={token} setToken={setToken} />
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+        <div>
+          <Authenticate token={token} setToken={setToken} />
         </div>
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-          <label className="form-check-label" >Check me out</label>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      </section>
     </>
   )
 }
